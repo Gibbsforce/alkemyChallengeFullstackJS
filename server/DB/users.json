@@ -5,5 +5,19 @@
     "email": "test email1",
     "_id": 1,
     "timestamp": "2022-05-22T18:30:52.559Z"
+  },
+  {
+    "name": "test name",
+    "password": "$2b$10$8AN4gOztkbZMZj84uoyNLenxxYtJQoAZuGau5AAaMyDUXUVWedhBq",
+    "email": "test email2",
+    "_id": 2,
+    "timestamp": "2022-05-22T18:58:39.390Z"
+  },
+  {
+    "name": "test name",
+    "password": "$2b$10$5S9bFCMkpyYf5JgepyIWiuyZjPse0iLCFEDnc39tYhnZQpZBxAWVG",
+    "email": "test email3",
+    "_id": 3,
+    "timestamp": "2022-05-22T19:04:15.305Z"
   }
 ]

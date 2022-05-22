@@ -22,6 +22,10 @@ const createBudget = async (req, res) => {
       concept,
       amount,
       type,
+      user: {
+        email: req.user.email,
+        name: req.user.name,
+      },
     }
     const budgetSaved = await budgetDAO.save(budget)
     res.status(201).json({

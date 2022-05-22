@@ -7,7 +7,7 @@ export const token = (user) => {
     },
     process.env.JWT_SECRET,
     {
-      expiresIn: "2m",
+      expiresIn: "5m",
     }
   )
   return token
