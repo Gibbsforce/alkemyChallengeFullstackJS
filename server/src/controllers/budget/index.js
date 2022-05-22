@@ -20,11 +20,11 @@ const getBudget = async (req, res) => {
 }
 const createBudget = async (req, res) => {
   try {
-    const { concept, amount, type } = req.body
     const budget = {
-      concept,
-      amount,
-      type,
+      concept: req.body.concept,
+      amount: req.body.amount,
+      type: req.body.type,
+      category: req.body.type === "income" ? undefined : req.body.category,
       user: {
         email: req.user.email,
         name: req.user.name,
@@ -73,13 +73,15 @@ const updateBudgetById = async (req, res) => {
     if (!userBudget.map(({ _id }) => _id.toString()).includes(id))
       return res.status(404).json({ message: "Not found" })
     const previousBudget = await budgetDAO.getById(id)
-    const { concept, amount, type } = req.body
+    const { concept, amount, category } = req.body
+    /* Check persistence memory data details*/
     const budget = {
       ...previousBudget,
-      concept,
-      amount,
-      type,
+      concept: concept || previousBudget.concept,
+      amount: amount || previousBudget.amount,
+      category: previousBudget.type === "income" ? undefined : category,
     }
+    /* */
     const budgetUpdated = await budgetDAO.updateById(id, budget)
     res.status(200).json({
       message: "OK",
@@ -121,9 +123,11 @@ const deleteBudget = async (req, res) => {
     )
     if (userBudget.length === 0)
       return res.status(404).json({ message: "Not found" })
+    /* Optimize in the future */
     for (let i = 0; i < userBudget.length; i++) {
       await budgetDAO.deleteById(userBudget[i]._id.toString())
     }
+    /* */
     res.status(200).json({
       message: "OK",
       budget: true,

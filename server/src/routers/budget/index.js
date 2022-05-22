@@ -3,13 +3,27 @@ import express from "express"
 import budgetController from "../../controllers/budget/index.js"
 // Middlewares
 import authenticateToken from "../../middlewares/auth/authenticateToken.js"
+import {
+  createBudgetValidation,
+  updateBudgetValidation,
+} from "../../middlewares/budget/budgetValidation.js"
 // Defining router
 const budgetRouter = express.Router()
 // Routers
 budgetRouter.get("/", authenticateToken, budgetController.getBudget)
-budgetRouter.post("/", authenticateToken, budgetController.createBudget)
+budgetRouter.post(
+  "/",
+  authenticateToken,
+  createBudgetValidation,
+  budgetController.createBudget
+)
 budgetRouter.get("/:id", authenticateToken, budgetController.getBudgetById)
-budgetRouter.patch("/:id", authenticateToken, budgetController.updateBudgetById)
+budgetRouter.patch(
+  "/:id",
+  authenticateToken,
+  updateBudgetValidation,
+  budgetController.updateBudgetById
+)
 budgetRouter.delete(
   "/:id",
   authenticateToken,
