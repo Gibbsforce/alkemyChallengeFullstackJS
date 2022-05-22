@@ -74,14 +74,12 @@ const updateBudgetById = async (req, res) => {
       return res.status(404).json({ message: "Not found" })
     const previousBudget = await budgetDAO.getById(id)
     const { concept, amount, category } = req.body
-    /* Check persistence memory data details*/
     const budget = {
       ...previousBudget,
       concept: concept || previousBudget.concept,
       amount: amount || previousBudget.amount,
       category: previousBudget.type === "income" ? undefined : category,
     }
-    /* */
     const budgetUpdated = await budgetDAO.updateById(id, budget)
     res.status(200).json({
       message: "OK",
