@@ -3,10 +3,13 @@ const { budgetDAO } = persistence
 // Controllers
 const getBudget = async (req, res) => {
   try {
-    const budget = await budgetDAO.getAll()
+    const budgets = await budgetDAO.getAll()
+    const userBudget = budgets.filter(
+      ({ user }) => user.email === req.user.email
+    )
     res.status(200).json({
       message: "OK",
-      budget: budget,
+      budget: userBudget,
     })
   } catch (error) {
     res.status(500).json({
@@ -41,7 +44,13 @@ const createBudget = async (req, res) => {
 }
 const getBudgetById = async (req, res) => {
   try {
+    const budgets = await budgetDAO.getAll()
+    const userBudget = budgets.filter(
+      ({ user }) => user.email === req.user.email
+    )
     const { id } = req.params
+    if (!userBudget.map(({ _id }) => _id.toString()).includes(id))
+      return res.status(404).json({ message: "Not found" })
     const budget = await budgetDAO.getById(id)
     res.status(200).json({
       message: "OK",
@@ -56,9 +65,17 @@ const getBudgetById = async (req, res) => {
 }
 const updateBudgetById = async (req, res) => {
   try {
+    const budgets = await budgetDAO.getAll()
+    const userBudget = budgets.filter(
+      ({ user }) => user.email === req.user.email
+    )
     const { id } = req.params
+    if (!userBudget.map(({ _id }) => _id.toString()).includes(id))
+      return res.status(404).json({ message: "Not found" })
+    const previousBudget = await budgetDAO.getById(id)
     const { concept, amount, type } = req.body
     const budget = {
+      ...previousBudget,
       concept,
       amount,
       type,
@@ -77,7 +94,13 @@ const updateBudgetById = async (req, res) => {
 }
 const deleteBudgetById = async (req, res) => {
   try {
+    const budgets = await budgetDAO.getAll()
+    const userBudget = budgets.filter(
+      ({ user }) => user.email === req.user.email
+    )
     const { id } = req.params
+    if (!userBudget.map(({ _id }) => _id.toString()).includes(id))
+      return res.status(404).json({ message: "Not found" })
     const budget = await budgetDAO.deleteById(id)
     res.status(200).json({
       message: "OK",
@@ -92,10 +115,18 @@ const deleteBudgetById = async (req, res) => {
 }
 const deleteBudget = async (req, res) => {
   try {
-    const budget = await budgetDAO.deleteAll()
+    const budgets = await budgetDAO.getAll()
+    const userBudget = budgets.filter(
+      ({ user }) => user.email === req.user.email
+    )
+    if (userBudget.length === 0)
+      return res.status(404).json({ message: "Not found" })
+    for (let i = 0; i < userBudget.length; i++) {
+      await budgetDAO.deleteById(userBudget[i]._id.toString())
+    }
     res.status(200).json({
       message: "OK",
-      budget: budget,
+      budget: true,
     })
   } catch (error) {
     res.status(500).json({

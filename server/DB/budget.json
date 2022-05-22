@@ -68,24 +68,24 @@
   {
     "concept": "test",
     "amount": "test",
-    "type": "test",
+    "type": "testtest",
     "user": {
       "email": "test email2",
       "name": "test name"
     },
     "_id": 7,
-    "timestamp": "2022-05-22T19:00:00.581Z"
+    "timestamp": "2022-05-22T19:48:51.048Z"
   },
   {
     "concept": "test",
     "amount": "test",
-    "type": "test",
+    "type": "testtest",
     "user": {
       "email": "test email2",
       "name": "test name"
     },
     "_id": 8,
-    "timestamp": "2022-05-22T19:00:01.235Z"
+    "timestamp": "2022-05-22T20:01:45.477Z"
   },
   {
     "concept": "test",

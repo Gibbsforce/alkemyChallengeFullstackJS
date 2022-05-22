@@ -71,7 +71,7 @@ class FileContainer {
       if (indexId === -1) return null
       readFile.splice(indexId, 1)
       await fs.promises.writeFile(path, JSON.stringify(readFile, null, 2))
-      return readFile
+      return true
     } catch (error) {
       console.log(`Error in deleting data by id: ${error}`)
     }

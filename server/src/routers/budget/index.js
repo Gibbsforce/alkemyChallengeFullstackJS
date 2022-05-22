@@ -6,10 +6,14 @@ import authenticateToken from "../../middlewares/auth/authenticateToken.js"
 // Defining router
 const budgetRouter = express.Router()
 // Routers
-budgetRouter.get("/", budgetController.getBudget)
+budgetRouter.get("/", authenticateToken, budgetController.getBudget)
 budgetRouter.post("/", authenticateToken, budgetController.createBudget)
-budgetRouter.get("/:id", budgetController.getBudgetById)
-budgetRouter.patch("/:id", budgetController.updateBudgetById)
-budgetRouter.delete("/:id", budgetController.deleteBudgetById)
-budgetRouter.delete("/", budgetController.deleteBudget)
+budgetRouter.get("/:id", authenticateToken, budgetController.getBudgetById)
+budgetRouter.patch("/:id", authenticateToken, budgetController.updateBudgetById)
+budgetRouter.delete(
+  "/:id",
+  authenticateToken,
+  budgetController.deleteBudgetById
+)
+budgetRouter.delete("/", authenticateToken, budgetController.deleteBudget)
 export default budgetRouter
