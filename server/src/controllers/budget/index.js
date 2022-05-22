@@ -25,7 +25,7 @@ const createBudget = async (req, res) => {
     }
     const budgetSaved = await budgetDAO.save(budget)
     res.status(201).json({
-      message: "Created",
+      message: "OK",
       budget: budgetSaved,
     })
   } catch (error) {

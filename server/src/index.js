@@ -1,3 +1,4 @@
+import { dotenv } from "./config.js"
 import express from "express"
 import router from "./routers/index.js"
 import { PORT } from "./utils/globalConstants.js"

@@ -1,5 +1,5 @@
 import fs from "fs"
-import options from "../../config.js"
+import { options } from "../../config.js"
 class FileContainer {
   constructor(fileName) {
     this.fileName = `${options.file.path}/${fileName}`
@@ -9,7 +9,7 @@ class FileContainer {
     try {
       const readFile = await fs.promises.readFile(path, "utf8")
       let newData = []
-      if (readFile === "" || readFile === "[}") {
+      if (readFile === "" || readFile === "[]") {
         data._id = 1
         data.timestamp = new Date().toISOString()
         newData = [data]
@@ -29,7 +29,7 @@ class FileContainer {
     const path = `./${this.fileName}`
     try {
       const readFile = await fs.promises.readFile(path, "utf8")
-      if (readFile === "" || readFile === "[}") return null
+      if (readFile === "" || readFile === "[]") return null
       return JSON.parse(readFile)
     } catch (error) {
       console.log(`Error in getting data: ${error}`)
@@ -39,7 +39,9 @@ class FileContainer {
     const path = `./${this.fileName}`
     try {
       const readFile = JSON.parse(await fs.promises.readFile(path, "utf8"))
-      const dataId = readFile.find(({ _id }) => _id.toString() === id)
+      const dataId = readFile.find(({ _id, email }) =>
+        email ? email.toString() === id : _id.toString() === id
+      )
       if (!dataId) return null
       return dataId
     } catch (error) {
