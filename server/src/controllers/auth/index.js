@@ -67,8 +67,29 @@ const getUser = async (req, res) => {
     })
   }
 }
+const deleteUser = async (req, res) => {
+  const { email } = req.user
+  try {
+    const user = await usersDAO.getById(email)
+    if (!user)
+      return res.status(404).json({
+        message: "User not found",
+      })
+
+    await usersDAO.deleteById(user._id.toString())
+    res.status(200).json({
+      message: "OK",
+    })
+  } catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      description: error,
+    })
+  }
+}
 export default {
   signUp,
   login,
   getUser,
+  deleteUser,
 }

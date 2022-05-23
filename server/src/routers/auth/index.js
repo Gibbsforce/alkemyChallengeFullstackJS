@@ -13,4 +13,5 @@ const authRouter = express.Router()
 authRouter.post("/signup", validateSignUp, authController.signUp)
 authRouter.post("/login", validateLogin, authController.login)
 authRouter.get("/user", authenticateToken, authController.getUser)
+authRouter.delete("/user", authenticateToken, authController.deleteUser)
 export default authRouter
