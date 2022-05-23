@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "concept": "test",
+    "amount": 25,
+    "type": "expense",
+    "category": "other",
+    "user": {
+      "email": "tlalvaro15@gmail.com",
+      "name": "Alvaro"
+    },
+    "_id": 1,
+    "timestamp": "2022-05-23T07:36:51.715Z"
+  },
+  {
+    "concept": "test",
+    "amount": 25,
+    "type": "expense",
+    "category": "other",
+    "user": {
+      "email": "tlalvaro15@gmail.com",
+      "name": "Alvaro"
+    },
+    "_id": 2,
+    "timestamp": "2022-05-23T07:36:52.575Z"
+  }
+]

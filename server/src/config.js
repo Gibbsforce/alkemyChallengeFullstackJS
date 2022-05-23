@@ -4,4 +4,11 @@ export const options = {
   file: {
     path: "./DB",
   },
+  sql: {
+    client: "sqlite3",
+    connection: {
+      filename: "./DB/api.sqlite",
+    },
+    useNullAsDefault: true,
+  },
 }
