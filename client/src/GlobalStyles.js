@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 export const GlobalStyles = createGlobalStyle`
-    :root: {
+    :root {
         --maxWidth: 1280px;
         --maxWidthTablet: 768px;
         --maxWidthMobile: 414px;
@@ -19,6 +19,8 @@ export const GlobalStyles = createGlobalStyle`
         --lightGray: #fafafa;
         --darkGray: #eaeaea;
         --black: #000;
+        --sky: #2c75d3;
+        --skyLight: #9cc3f5;
     }
     * {
         box-sizing: border-box;
