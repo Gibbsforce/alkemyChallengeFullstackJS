@@ -1,6 +1,6 @@
 // Hooks
-import { useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 // Modals
 import AddBudget from "../modals/AddBudget"
 // Components

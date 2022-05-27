@@ -1,8 +1,10 @@
 // Hooks
+import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
 // API
 import API from "../API"
+// Context
+import { UserContext } from "../contexts/UserContext"
 // Components
 import ModalContainer from "../components/ModalContainer"
 import Spinner from "../components/Spinner"
@@ -24,6 +26,8 @@ const inputElements = [
 const Login = ({ modal, setModal }) => {
 
     const navigate = useNavigate()
+
+    const [_token, setToken] = useContext(UserContext)
 
     const [email, setEmail] = useState(String)
     const [password, setPassword] = useState(String)
@@ -62,6 +66,7 @@ const Login = ({ modal, setModal }) => {
                 setMessage(description)
                 return
             }
+            setToken(token)
             localStorage.setItem("tokenBudgetApp", JSON.stringify(token))
             setLoading(false)
             navigate("/home")
