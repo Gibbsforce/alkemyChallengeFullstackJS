@@ -118,11 +118,13 @@ export const Table = styled.div`
       transform: scale(1.1);
     }
   }
-  /* .edit button,
+  .edit button,
   .delete button {
     background: none;
     border: none;
-  } */
+    margin: 0;
+    padding: 0;
+  }
   @media (max-width: 768px) {
     .expenses-container {
       grid-template-columns: 1fr 1fr 1fr;
