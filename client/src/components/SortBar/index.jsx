@@ -1,10 +1,10 @@
 import { Wrapper, Content } from "./SortBar.styles"
-// category: array, handleSelectChange: function
-const SortBar = ({ category, handleSelectChange }) => {
+// category: array, handleSelectChange: function, sortBy: string
+const SortBar = ({ category, handleSelectChange, sortTitle }) => {
     return (
         <Wrapper>
             <Content>
-                <span>Sort By:</span>
+                <span>{sortTitle}</span>
                 <select onChange={handleSelectChange}>
                     <option value="">All</option>
                     {

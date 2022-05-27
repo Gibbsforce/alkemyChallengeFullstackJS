@@ -1,5 +1,8 @@
 // Hooks
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
+// Modals
+import AddBudget from "../modals/AddBudget"
 // Components
 import Header from "../components/Header"
 import Body from "../components/Body"
@@ -8,6 +11,7 @@ const Home = () => {
     const navigate = useNavigate()
     const toExpenses = () => navigate("/expenses")
     const toIncomes = () => navigate("/incomes")
+    const [modalAdd, setModalAdd] = useState(Boolean)
     return (
         <>
             <Header
@@ -15,6 +19,10 @@ const Home = () => {
                 btnText="Log Out"
                 name={"Alvaro Avalos"}
                 email={"tlalvaro15@gmail.com"}
+            />
+            <AddBudget
+                modal={modalAdd}
+                setModal={setModalAdd}
             />
             <Body
                 home
@@ -25,6 +33,7 @@ const Home = () => {
             />
             <Button
                 text="Add"
+                callback={() => setModalAdd(!modalAdd)}
             />
         </>
     )

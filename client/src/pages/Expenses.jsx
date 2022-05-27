@@ -1,6 +1,8 @@
 // Hooks
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+// Modals
+import Continue from "../modals/Continue"
 // Components
 import Header from "../components/Header"
 import Body from "../components/Body"
@@ -11,6 +13,7 @@ const Expenses = () => {
     const navigate = useNavigate()
     const toHome = () => navigate("/home")
 
+    const [modal, setModal] = useState(Boolean)
     const [categorySelect, setCategorySelect] = useState(String)
 
     const handleSelectChange = (e) => {
@@ -26,7 +29,12 @@ const Expenses = () => {
                 name={"Alvaro Avalos"}
                 email={"tlalvaro15@gmail.com"}
             />
+            <Continue
+                modal={modal}
+                setModal={setModal}
+            />
             <SortBar
+                sortTitle={`Sort by:`}
                 category={category.map(({ name }) => name)}
                 handleSelectChange={handleSelectChange}
             />
@@ -36,6 +44,7 @@ const Expenses = () => {
                     categorySelect ? user[0].budget.filter(({ category }) => category === categorySelect) : user[0].budget
                 }
                 expensesCategory={category}
+                deleteExpense={() => setModal(!modal)}
             />
         </>
     )

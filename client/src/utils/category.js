@@ -92,6 +92,18 @@ export const user = [
     ],
   },
 ]
+export const type = [
+  {
+    id: 1,
+    type: "expense",
+    name: "Expense",
+  },
+  {
+    id: 2,
+    type: "income",
+    name: "Income",
+  },
+]
 export const category = [
   {
     id: 1,
