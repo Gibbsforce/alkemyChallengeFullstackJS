@@ -12,7 +12,9 @@ const signUp = async (req, res) => {
   try {
     const userExists = await usersDAO.getById(newUser.email)
     if (userExists)
-      return res.status(409).json({ message: "User already exists" })
+      return res
+        .status(409)
+        .json({ message: "Conflict", description: "User already exists" })
     const user = await usersDAO.save(newUser)
     res.status(201).json({
       message: "OK",
@@ -32,11 +34,13 @@ const login = async (req, res) => {
     const user = await usersDAO.getById(email)
     if (!user)
       return res.status(404).json({
-        message: "User not found",
+        message: "Not Found",
+        description: "User not found",
       })
     if (!isValidPassword(user, password))
       return res.status(401).json({
-        message: "Invalid password",
+        message: "Unauthorized",
+        description: "Invalid password",
       })
     res.status(200).json({
       message: "OK",
@@ -73,7 +77,8 @@ const deleteUser = async (req, res) => {
     const user = await usersDAO.getById(email)
     if (!user)
       return res.status(404).json({
-        message: "User not found",
+        message: "Not Found",
+        description: "User not found",
       })
 
     await usersDAO.deleteById(user._id.toString())

@@ -33,9 +33,5 @@ export const validateLogin = (req, res, next) => {
     return res
       .status(400)
       .json({ message: "Bad Request", description: "Invalid email" })
-  if (!validatePassword(password))
-    return res
-      .status(400)
-      .json({ message: "Bad Request", description: "Invalid password" })
   next()
 }
