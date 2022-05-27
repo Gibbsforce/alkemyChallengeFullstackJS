@@ -20,8 +20,6 @@ const Incomes = () => {
                 welcome="Expenses"
                 btnText={"Back"}
                 btnCallback={toHome}
-                name={"Alvaro Avalos"}
-                email={"tlalvaro15@gmail.com"}
             />
             <Continue
                 modal={modal}

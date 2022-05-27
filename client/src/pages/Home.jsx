@@ -17,8 +17,6 @@ const Home = () => {
             <Header
                 welcome="Home"
                 btnText="Log Out"
-                name={"Alvaro Avalos"}
-                email={"tlalvaro15@gmail.com"}
             />
             <AddBudget
                 modal={modalAdd}
