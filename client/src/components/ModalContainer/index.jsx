@@ -13,6 +13,7 @@ const ModalContainer = ({
     actionButtonCallback, // function
     actionButtonText, // string
     inputElements, // array
+    handleInput, // function
     parrText, // string
     budgetType, // array
     budgetTypeAction, // function
@@ -44,7 +45,7 @@ const ModalContainer = ({
                         <h1>{title}</h1>
                         <div className="image-modal" dangerouslySetInnerHTML={imageModal} />
                         {
-                            inputElements && inputElements.map(({name, type, placeholder}, index) => <input key={index} name={name} type={type} placeholder={placeholder}/>)
+                            inputElements && inputElements.map(({ name, type, placeholder }, index) => <input key={index} name={name} type={type} onChange={handleInput} placeholder={placeholder}/>)
                         }
                         {
                             parrText && <p>{parrText}</p>
