@@ -33,12 +33,12 @@ const Header = ({ welcome, btnText, btnCallback }) => {
                         }
                         {
                             <li>
-                                <strong>{name || "name"}</strong>
+                                <strong>{name || "-"}</strong>
                             </li>
                         }
                         {
                             <li>
-                                <strong>{email || "email"}</strong>
+                                <strong>{email || "-"}</strong>
                             </li>
                         }
                 </ul>
