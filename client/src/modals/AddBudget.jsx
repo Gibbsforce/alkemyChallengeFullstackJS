@@ -26,8 +26,8 @@ const AddBudget = ({ modal, setModal }) => {
             actionButtonText={"Add"}
             inputElements={inputElements}
             budgetType={type}
-            budgetCategory={category}
             budgetTypeName={"Type"}
+            budgetCategory={category}
             budgetCategoryName={"Category"}
         >
         </ModalContainer>
