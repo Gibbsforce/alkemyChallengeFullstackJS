@@ -75,7 +75,7 @@ const AddBudget = ({ modal, setModal }) => {
                 concept,
                 amount: Number(amount),
                 type: addType,
-                category: addCategory,
+                category: addType === "income" ? "other" : addCategory,
             }
             console.log(newBudget)
             const { message, description } = await API.fetchCreateBudget(token, newBudget)
