@@ -45,16 +45,16 @@ const ModalContainer = ({
                         <h1>{title}</h1>
                         <div className="image-modal" dangerouslySetInnerHTML={imageModal} />
                         {
-                            inputElements && inputElements.map(({ name, type, placeholder }, index) => <input key={index} name={name} type={type} onChange={handleInput} placeholder={placeholder}/>)
+                            inputElements && inputElements.map(({ name, type, placeholder, handleKeyPress }, index) => <input key={index} name={name} type={type} onChange={handleInput} onKeyPress={handleKeyPress} placeholder={placeholder}/>)
                         }
                         {
                             parrText && <p>{parrText}</p>
                         }
                         {
-                            budgetType && <SortBar sortTitle={budgetTypeName} category={budgetType.map(({ type }) => type)} handleSelectChange={budgetTypeAction} />
+                            budgetType && <SortBar name={budgetTypeName.toLocaleLowerCase()} sortTitle={budgetTypeName} category={budgetType.map(({ type }) => type)} handleSelectChange={budgetTypeAction} />
                         }
                         {
-                            budgetCategory && <SortBar sortTitle={budgetCategoryName} category={budgetCategory.map(({ name }) => name)} handleSelectChange={budgetCategoryAction} />
+                            budgetCategory && <SortBar name={budgetCategoryName.toLocaleLowerCase()} sortTitle={budgetCategoryName} category={budgetCategory.map(({ name }) => name)} handleSelectChange={budgetCategoryAction} />
                         }
                         {
                             actionButtonText && <Button text={actionButtonText} callback={actionButtonCallback} />

@@ -14,8 +14,10 @@ const Home = () => {
     const [_, setToken] = useContext(UserContext)
 
     const navigate = useNavigate()
+    
     const toExpenses = () => navigate("/expenses")
     const toIncomes = () => navigate("/incomes")
+
     const [modalAdd, setModalAdd] = useState(Boolean)
 
     const logOut = () => {

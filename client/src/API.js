@@ -54,6 +54,7 @@ const apiSettings = {
       ...defaultConfigPost,
       headers: {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(budget),
     }
@@ -83,6 +84,7 @@ const apiSettings = {
       ...defaultConfigPatch,
       headers: {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(budget),
     }
@@ -94,6 +96,7 @@ const apiSettings = {
       ...defaulConfigDelete,
       headers: {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
     }
     return await (await fetch(endpoint, data)).json()
@@ -104,6 +107,7 @@ const apiSettings = {
       ...defaulConfigDelete,
       headers: {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
     }
     return await (await fetch(endpoint, data)).json()
