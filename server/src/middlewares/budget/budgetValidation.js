@@ -5,7 +5,7 @@ export const createBudgetValidation = (req, res, next) => {
     return res
       .status(400)
       .json({ message: "Bad Request", description: "Missing fields" })
-  if (!Number(amount))
+  if (!Number(amount) || amount <= 0)
     return res
       .status(400)
       .json({ message: "Bad Request", description: "Invalid number format" })
