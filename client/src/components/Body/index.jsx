@@ -50,7 +50,7 @@ const Body = ({
                         <Table>
                             {
                                 expensesArray.length > 0 ?
-                                    expensesArray.map(({ concept, amount, type, category, date }, index) => {
+                                    expensesArray.map(({ concept, amount, type, category, timestamp }, index) => {
                                     return (
                                         <div key={index}>
                                             {
@@ -64,7 +64,7 @@ const Body = ({
                                                     <div className="info">
                                                         <span><strong>{concept}</strong></span>
                                                         <span><strong>{category}</strong></span>
-                                                        <span><strong>{date}</strong></span>
+                                                        <span><strong>{timestamp.slice(0, 10)}</strong></span>
                                                     </div>
                                                     <div className="amount">
                                                         <strong>$ {Number(amount).toFixed(2)}</strong>
@@ -95,7 +95,7 @@ const Body = ({
                     income &&
                         <Table>
                               {
-                                incomesArray && incomesArray.map(({ concept, amount, type, category, date }, index) => {
+                                incomesArray && incomesArray.map(({ concept, amount, type, category, timestamp }, index) => {
                                     return (
                                     <div key={index}>
                                         {
@@ -108,7 +108,7 @@ const Body = ({
                                                 </div>
                                                 <div className="info">
                                                     <span><strong>{concept}</strong></span>
-                                                    <span><strong>{date}</strong></span>
+                                                    <span><strong>{timestamp.slice(0, 10)}</strong></span>
                                                 </div>
                                                 <div className="amount">
                                                     <strong>$ {Number(amount).toFixed(2)}</strong>
