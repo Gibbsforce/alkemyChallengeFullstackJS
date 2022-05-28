@@ -1,6 +1,7 @@
 // Hooks
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
+import { useGetBudgetsFetch } from "../hooks/useGetBudgetsFetch"
 // Context
 import { UserContext } from "../contexts/UserContext"
 // Modals
@@ -9,14 +10,27 @@ import AddBudget from "../modals/AddBudget"
 import Header from "../components/Header"
 import Body from "../components/Body"
 import Button from "../components/Button"
+// Helpers
+import { decodeJWT } from "../utils/helpers"
 const Home = () => {
 
-    const [_, setToken] = useContext(UserContext)
+    const { totalExpense, totalIncome } = useGetBudgetsFetch()
+
+    const [token, setToken] = useContext(UserContext)
 
     const navigate = useNavigate()
     
-    const toExpenses = () => navigate("/expenses")
-    const toIncomes = () => navigate("/incomes")
+    const toExpenses = () => {
+        const { exp } = decodeJWT(token)
+        if (exp * 1000 < Date.now()) return setToken(null)
+        navigate("/expenses")
+    }
+
+    const toIncomes = () => {
+        const { exp } = decodeJWT(token)
+        if (exp * 1000 < Date.now()) return setToken(null)
+        navigate("/incomes")
+    }
 
     const [modalAdd, setModalAdd] = useState(Boolean)
 
@@ -39,8 +53,8 @@ const Home = () => {
                 home
                 toExpenses={toExpenses}
                 toIncomes={toIncomes}
-                totalExpense={"0.00"}
-                totalIncome={"0.00"}
+                totalExpense={totalExpense.toFixed(2)}
+                totalIncome={totalIncome.toFixed(2)}
             />
             <Button
                 text="Add"

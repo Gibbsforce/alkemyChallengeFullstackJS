@@ -1,15 +1,20 @@
 // Hooks
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useGetBudgetsFetch } from "../hooks/useGetBudgetsFetch"
 // Modals
 import Continue from "../modals/Continue"
 // Components
 import Header from "../components/Header"
 import Body from "../components/Body"
 import SortBar from "../components/SortBar"
+import Spinner from "../components/Spinner"
 // Utils
-import { category, user } from "../utils/category"
+import { category } from "../utils/category"
 const Expenses = () => {
+
+    const { error, budgets, isLoading } = useGetBudgetsFetch()
+
     const navigate = useNavigate()
     const toHome = () => navigate("/home")
 
@@ -36,10 +41,12 @@ const Expenses = () => {
                 category={category.map(({ name }) => name)}
                 handleSelectChange={handleSelectChange}
             />
+            {isLoading && <Spinner />}
+            {error && <span>{"Something went wrong...!"}</span>}
             <Body
                 expense
                 expensesArray={
-                    categorySelect ? user[0].budget.filter(({ category }) => category === categorySelect) : user[0].budget
+                    categorySelect ? budgets.filter(({ category }) => category === categorySelect) : budgets
                 }
                 expensesCategory={category}
                 deleteExpense={() => setModal(!modal)}

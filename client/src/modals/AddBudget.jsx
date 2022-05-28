@@ -77,7 +77,6 @@ const AddBudget = ({ modal, setModal }) => {
                 type: addType,
                 category: addType === "income" ? "other" : addCategory,
             }
-            console.log(newBudget)
             const { message, description } = await API.fetchCreateBudget(token, newBudget)
             if (message !== "OK") {
                 setLoading(false)
@@ -93,7 +92,8 @@ const AddBudget = ({ modal, setModal }) => {
                 return
             }
             setLoading(false)
-            navigate("/expenses")
+            if (addType === "income") return navigate("/incomes")
+            if (addType === "expense") return navigate("/expenses")
         } catch (error) {
             setLoading(false)
             setError(true)
