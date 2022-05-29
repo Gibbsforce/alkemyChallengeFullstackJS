@@ -12,5 +12,12 @@
     "email": "countaleatorio@gmail.com",
     "_id": 2,
     "timestamp": "2022-05-27T21:46:46.776Z"
+  },
+  {
+    "name": "Test",
+    "password": "$2b$10$wjCggr6movCjPtqw2ipiieRuMtGjlqnUxssKjJRdZc6Qw6C/dw2eG",
+    "email": "test@gmail.com",
+    "_id": 3,
+    "timestamp": "2022-05-29T00:32:09.225Z"
   }
 ]

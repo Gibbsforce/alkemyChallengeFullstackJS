@@ -18,7 +18,7 @@ class SQLContainer {
       const result = await this.db(this.tableName).select()
       if (result.length === 0) return null
       const resultParsed = result.map(
-        ({ _id, concept, amount, user, type, category }) => {
+        ({ _id, concept, amount, user, type, category, timestamp }) => {
           return {
             _id,
             concept,
@@ -26,6 +26,7 @@ class SQLContainer {
             user: JSON.parse(user),
             type,
             category,
+            timestamp,
           }
         }
       )
@@ -45,7 +46,7 @@ class SQLContainer {
           const resultId = await this.db(this.tableName).where({ _id })
           if (resultId.length === 0) return null
           const resultParsed = resultId.map(
-            ({ _id, concept, amount, user, type, category }) => {
+            ({ _id, concept, amount, user, type, category, timestamp }) => {
               return {
                 _id,
                 concept,
@@ -53,6 +54,7 @@ class SQLContainer {
                 user: JSON.parse(user),
                 type,
                 category,
+                timestamp,
               }
             }
           )
@@ -71,6 +73,7 @@ class SQLContainer {
       user: JSON.stringify(data.user),
       type: data.type,
       category: data.category,
+      timestamp: new Date().toISOString(),
     }
     try {
       const result = await this.db(this.tableName)
