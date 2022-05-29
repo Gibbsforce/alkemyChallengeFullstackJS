@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 // Context
 import UserProvider from "./contexts/UserContext"
 // Compoenents
-import Footer from "./components/Footer"
 import RequireAuth from "./components/RequireAuth"
 // Pages
 import Welcome from "./pages/Welcome"
 import Home from "./pages/Home"
 import Expenses from "./pages/Expenses"
 import Incomes from "./pages/Incomes"
+import NotFound from "./pages/NotFound"
 // Global Styles
 import { GlobalStyles } from "./GlobalStyles"
 const App = () => {
@@ -23,9 +23,8 @@ const App = () => {
             <Route path="/expenses" element={<Expenses />} />
             <Route path="/incomes" element={<Incomes />} />
           </Route>
-          <Route path="/*" element={<div>Not Found</div>} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
-        <Footer />
         <GlobalStyles />
       </UserProvider>
     </Router>

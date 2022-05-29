@@ -10,6 +10,7 @@ import AddBudget from "../modals/AddBudget"
 import Header from "../components/Header"
 import Body from "../components/Body"
 import Button from "../components/Button"
+import Footer from "../components/Footer"
 // Helpers
 import { decodeJWT } from "../utils/helpers"
 const Home = () => {
@@ -60,6 +61,7 @@ const Home = () => {
                 text="Add"
                 callback={() => setModalAdd(!modalAdd)}
             />
+            <Footer />
         </>
     )
 }

@@ -7,6 +7,7 @@ import SignUp from '../modals/SignUp'
 import Header from "../components/Header"
 import Body from "../components/Body"
 import Button from "../components/Button"
+import Footer from "../components/Footer"
 const Welcome = () => {
     const [modalLogin, setModalLogin] = useState(Boolean)
     const [modalSignUp, setModalSigUp] = useState(Boolean)
@@ -29,6 +30,7 @@ const Welcome = () => {
                 <Button text={"Login"} callback={() => setModalLogin(!modalLogin)}/>
                 <Button text={"Sign Up"} callback={() => setModalSigUp(!modalSignUp)}/>
             </Body>
+            <Footer />
         </>
     )
 }
