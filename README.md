@@ -111,3 +111,21 @@ npm run build
 ```
 npm start
 ```
+
+## 3. Use the app
+
+`For the first time, you should sign up. You should provide a Name, an email and a password, the password should be an 8 characters length and contains aat least one letter and one number`
+
+```
+Name: Alvaro
+```
+
+```
+Email: tlalvaro15@gmail.com
+```
+
+```
+Password: aaaa0000
+```
+
+`The data provided above is already stored in both fila and sql persistence, you could directly login`
