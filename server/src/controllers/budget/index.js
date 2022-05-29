@@ -4,6 +4,10 @@ const { budgetDAO } = persistence
 const getBudget = async (req, res) => {
   try {
     const budgets = await budgetDAO.getAll()
+    if (!budgets)
+      return res
+        .status(404)
+        .json({ message: "Not found", description: "No items yet" })
     const userBudget = budgets.filter(
       ({ user }) => user.email === req.user.email
     )
