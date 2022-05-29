@@ -2,17 +2,19 @@
 import ModalContainer from "../components/ModalContainer"
 // Utils
 import icons from "../utils/icons"
-// modal: boolean, setModal: function
-const Continue = ({ modal, setModal }) => {
+// modal: boolean, setModal: function, isConfirm: boolean, handleDelete: function
+const Continue = ({ modal, setModal, noActionButtonCallback, actionButtonCallback }) => {
     return (
         <ModalContainer
             stateModal={modal}
-            closeButton={() => setModal(false)}
+            closeButton={() => setModal(!modal)}
             title={"Attention!"}
             parrText={"Are you sure you want to continue?"}
             imageModal={icons.markQuestion}
-            actionButtonText={"Continue"}
-
+            noActionButtonText={"No"}
+            noActionButtonCallback={noActionButtonCallback}
+            actionButtonText={"Yes"}
+            actionButtonCallback={actionButtonCallback}
         >
         </ModalContainer>
     )

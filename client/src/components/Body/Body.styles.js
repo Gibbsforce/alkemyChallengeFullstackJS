@@ -90,9 +90,34 @@ export const Table = styled.div`
     span {
       text-align: left;
     }
+    input {
+      width: 120px;
+      height: 20px;
+      font-weight: bold;
+      color: black;
+    }
   }
   .amount {
     font-size: var(--fontSuperbig);
+    text-align: left;
+    input {
+      width: 75px;
+      height: 20px;
+      font-weight: bold;
+    }
+    button {
+      cursor: pointer;
+      background: var(--sky);
+      color: var(--white);
+      border: none;
+      margin-left: 10px;
+      transition: all 0.3s ease-in-out;
+      :hover {
+        background: var(--skyLight);
+        transition: all 0.3s ease-in-out;
+        color: black;
+      }
+    }
   }
   .edit svg {
     width: 50px;

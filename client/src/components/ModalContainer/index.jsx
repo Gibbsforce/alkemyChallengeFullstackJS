@@ -12,6 +12,8 @@ const ModalContainer = ({
     closeButton, // function
     actionButtonCallback, // function
     actionButtonText, // string
+    noActionButtonCallback, // function
+    noActionButtonText, // string
     inputElements, // array
     handleInput, // function
     parrText, // string
@@ -55,6 +57,9 @@ const ModalContainer = ({
                         }
                         {
                             budgetCategory && <SortBar name={budgetCategoryName.toLocaleLowerCase()} sortTitle={budgetCategoryName} category={budgetCategory.map(({ name }) => name)} handleSelectChange={budgetCategoryAction} />
+                        }
+                        {
+                            noActionButtonText && <Button text={noActionButtonText} callback={noActionButtonCallback} />
                         }
                         {
                             actionButtonText && <Button text={actionButtonText} callback={actionButtonCallback} />
