@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 // Hooks
 import { useEffect, useRef } from "react"
 // Components
@@ -5,24 +6,24 @@ import Button from "../Button"
 import SortBar from "../SortBar"
 import { Wrapper, Content, CloseButton } from "./ModalContainer.styles"
 const ModalContainer = ({
-    children, // node
-    stateModal, // Boolean
-    title, // string
-    imageModal, // string
-    closeButton, // function
-    actionButtonCallback, // function
-    actionButtonText, // string
-    noActionButtonCallback, // function
-    noActionButtonText, // string
-    inputElements, // array
-    handleInput, // function
-    parrText, // string
-    budgetType, // array
-    budgetTypeAction, // function
-    budgetTypeName, // string
-    budgetCategory, // array
-    budgetCategoryAction, // function
-    budgetCategoryName, // string
+    children,
+    stateModal,
+    title,
+    imageModal,
+    closeButton,
+    actionButtonCallback,
+    actionButtonText,
+    noActionButtonCallback,
+    noActionButtonText,
+    inputElements,
+    handleInput,
+    parrText,
+    budgetType,
+    budgetTypeAction,
+    budgetTypeName,
+    budgetCategory,
+    budgetCategoryAction,
+    budgetCategoryName,
 }) => {
 
     const closeOutside = useRef()
@@ -76,5 +77,23 @@ const ModalContainer = ({
             }
         </>
     )
+}
+ModalContainer.propTypes = {
+    children: PropTypes.node,
+    stateModal: PropTypes.bool,
+    title: PropTypes.string,
+    closeButton: PropTypes.func,
+    actionButtonCallback: PropTypes.func,
+    actionButtonText: PropTypes.string,
+    noActionButtonCallback: PropTypes.func,
+    noActionButtonText: PropTypes.string,
+    inputElements: PropTypes.array,
+    handleInput: PropTypes.func,
+    parrText: PropTypes.string,
+    budgetType: PropTypes.array,
+    budgetTypeAction: PropTypes.func,
+    budgetTypeName: PropTypes.string,
+    budgetCategoryAction: PropTypes.func,
+    budgetCategoryName: PropTypes.string,
 }
 export default ModalContainer

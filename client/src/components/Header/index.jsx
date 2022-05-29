@@ -1,10 +1,11 @@
+import PropTypes from "prop-types"
+// Hooks
 import { useState, useEffect, useContext } from "react"
 // Context
 import { UserContext } from "../../contexts/UserContext"
 // Helpers
 import { decodeJWT } from '../../utils/helpers'
 import { Wrapper, Content } from "./Header.styles"
-// welcome: boolean, btnText: string, btnCallback: function, name: string, email: string
 const Header = ({ welcome, btnText, btnCallback }) => {
 
     const [token] = useContext(UserContext)
@@ -45,5 +46,10 @@ const Header = ({ welcome, btnText, btnCallback }) => {
             </Content>
         </Wrapper>
     )
+}
+Header.propTypes = {
+    welcome: PropTypes.string,
+    btnText: PropTypes.string,
+    btnCallback: PropTypes.func,
 }
 export default Header

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 // Hooks
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
@@ -110,5 +111,9 @@ const SignUp = ({ modal, setModal }) => {
             }
         </ModalContainer>
     )
+}
+SignUp.propTypes = {
+    modal: PropTypes.bool,
+    setModal: PropTypes.func,
 }
 export default SignUp

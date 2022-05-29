@@ -1,29 +1,30 @@
+import PropTypes from "prop-types"
 import { Wrapper, Content, Grid, Table } from "./Body.styles"
 const Body = ({
     children,
-    padW, // string
-    home, // boolean
-    toExpenses, // function
-    toIncomes, // function
-    totalExpense, // number
-    totalIncome, // number
-    expense, // boolean
-    expensesArray, // array
-    expensesCategory, // array
-    listOption, // array
-    editExpense, // function
-    onEditExpense, // boolean
-    onEditExpenseHandlerChange, // function
-    finishEditExpense, // function
-    deleteExpense, // function
-    income, // boolean
-    incomesArray, // array
-    justIncome, // array
-    editIncome, // function
-    onEditIncome, // boolean
-    onEditIncomeHandlerChange, // function
-    finishEditIncome, // function
-    deleteIncome, // function
+    padW,
+    home,
+    toExpenses,
+    toIncomes,
+    totalExpense,
+    totalIncome,
+    expense,
+    expensesArray,
+    expensesCategory,
+    listOption,
+    editExpense,
+    onEditExpense,
+    onEditExpenseHandlerChange,
+    finishEditExpense,
+    deleteExpense,
+    income,
+    incomesArray,
+    justIncome,
+    editIncome,
+    onEditIncome,
+    onEditIncomeHandlerChange,
+    finishEditIncome,
+    deleteIncome,
 }) => {
     return (
         <Wrapper padW={padW}>
@@ -106,46 +107,48 @@ const Body = ({
                     income &&
                         <Table>
                               {
-                                incomesArray && incomesArray.filter(({ type }) => type === "income").map(({ concept, amount, type, category, timestamp }, index) => {
+                                incomesArray.length > 0 ?
+                                    incomesArray.filter(({ type }) => type === "income").map(({ concept, amount, type, category, timestamp }, index) => {
                                     return (
-                                    <div key={index}>
-                                        {
-                                            type === "income" &&
-                                            <div className="expenses-container">
-                                                <div className="image">
+                                        <div key={index}>
+                                            {
+                                                type === "income" &&
+                                                <div className="expenses-container">
+                                                    <div className="image">
+                                                        {
+                                                            justIncome.map(({ name, icon }, index) => (name === "Income") && <div key={index} dangerouslySetInnerHTML={icon}/>)
+                                                        }
+                                                    </div>
+                                                    <div className="info">
+                                                        <span><strong>{onEditIncome ? <input type={"text"} name={`concept-${index}`} onChange={onEditIncomeHandlerChange} placeholder={concept}/> : concept}</strong></span>
+                                                        <span><strong>{timestamp.slice(0, 10)}</strong></span>
+                                                    </div>
+                                                    <div className="amount">
+                                                        <strong>$ {onEditIncome ? <input type={"tel"} name={`amount-${index}`} onChange={onEditIncomeHandlerChange}  onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()} placeholder={Number(amount).toFixed(2)}/> : Number(amount).toFixed(2)}</strong>
+                                                        {onEditIncome && <button value={index} onClick={() => finishEditIncome(index)}>Edit</button>}
+                                                    </div>
                                                     {
-                                                        justIncome.map(({ name, icon }, index) => (name === "Income") && <div key={index} dangerouslySetInnerHTML={icon}/>)
+                                                        !onEditExpense &&
+                                                        <div className="edit">
+                                                            <button value={index} onClick={editIncome}>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil" viewBox="0 0 16 16">
+                                                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
                                                     }
-                                                </div>
-                                                <div className="info">
-                                                    <span><strong>{onEditIncome ? <input type={"text"} name={`concept-${index}`} onChange={onEditIncomeHandlerChange} placeholder={concept}/> : concept}</strong></span>
-                                                    <span><strong>{timestamp.slice(0, 10)}</strong></span>
-                                                </div>
-                                                <div className="amount">
-                                                    <strong>$ {onEditIncome ? <input type={"tel"} name={`amount-${index}`} onChange={onEditIncomeHandlerChange}  onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()} placeholder={Number(amount).toFixed(2)}/> : Number(amount).toFixed(2)}</strong>
-                                                    {onEditIncome && <button value={index} onClick={() => finishEditIncome(index)}>Edit</button>}
-                                                </div>
-                                                {
-                                                    !onEditExpense &&
-                                                    <div className="edit">
-                                                        <button value={index} onClick={editIncome}>
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil" viewBox="0 0 16 16">
-                                                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                                                    <div className="delete">
+                                                        <button value={index} onClick={() => deleteIncome(index)}>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                }
-                                                <div className="delete">
-                                                    <button value={index} onClick={() => deleteIncome(index)}>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                                        </svg>
-                                                    </button>
                                                 </div>
-                                            </div>
-                                        }
-                                    </div>)
-                                })
+                                            }
+                                        </div>
+                                    )})
+                                : <span>Nothing to show</span>
                             }
                         </Table>
                 }
@@ -153,5 +156,31 @@ const Body = ({
             </Content>
         </Wrapper>
     )
+}
+Body.propTypes = {
+    children: PropTypes.node,
+    padW: PropTypes.string,
+    home: PropTypes.bool,
+    toExpenses: PropTypes.func,
+    toIncomes: PropTypes.func,
+    totalExpenses: PropTypes.number,
+    totalIncomes: PropTypes.number,
+    expense: PropTypes.bool,
+    expensesArray: PropTypes.array,
+    expensesCategory: PropTypes.array,
+    listOption: PropTypes.array,
+    editExpense: PropTypes.func,
+    onEditExpense: PropTypes.bool,
+    onEditExpenseHandlerChange: PropTypes.func,
+    finishEditExpense: PropTypes.func,
+    deleteExpense: PropTypes.func,
+    income: PropTypes.bool,
+    incomesArray: PropTypes.array,
+    justIncome: PropTypes.array,
+    editIncome: PropTypes.func,
+    onEditIncome: PropTypes.bool,
+    onEditIncomeHandlerChange: PropTypes.func,
+    finishEditIncome: PropTypes.func,
+    deleteIncome: PropTypes.func,
 }
 export default Body

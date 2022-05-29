@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 // Hooks
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
@@ -24,7 +25,6 @@ const inputElements = [
         handleKeyPress: (e) => !/[0-9]/.test(e.key) && e.preventDefault(),
     },
 ]
-// modal: boolean, setModal: function
 const AddBudget = ({ modal, setModal }) => {
 
     const navigate = useNavigate()
@@ -122,5 +122,9 @@ const AddBudget = ({ modal, setModal }) => {
             {error && <p style={{color: "red", fontSize: "30px"}}>{message}</p>}
         </ModalContainer>
     )
+}
+AddBudget.propTypes = {
+    modal: PropTypes.bool,
+    setModal: PropTypes.func,
 }
 export default AddBudget

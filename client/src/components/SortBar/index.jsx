@@ -1,5 +1,5 @@
+import PropTypes from "prop-types"
 import { Wrapper, Content } from "./SortBar.styles"
-// category: array, handleSelectChange: function, sortBy: string
 const SortBar = ({ name, category, handleSelectChange, sortTitle }) => {
     return (
         <Wrapper>
@@ -14,5 +14,11 @@ const SortBar = ({ name, category, handleSelectChange, sortTitle }) => {
             </Content>
         </Wrapper>
     )
+}
+SortBar.propTypes = {
+    name: PropTypes.string,
+    category: PropTypes.array,
+    handleSelectChange: PropTypes.func,
+    sortTitle: PropTypes.string,
 }
 export default SortBar

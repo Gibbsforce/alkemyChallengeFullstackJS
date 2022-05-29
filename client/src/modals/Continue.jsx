@@ -1,8 +1,8 @@
+import PropTypes from "prop-types"
 // Components
 import ModalContainer from "../components/ModalContainer"
 // Utils
 import icons from "../utils/icons"
-// modal: boolean, setModal: function, isConfirm: boolean, handleDelete: function
 const Continue = ({ modal, setModal, noActionButtonCallback, actionButtonCallback }) => {
     return (
         <ModalContainer
@@ -18,5 +18,11 @@ const Continue = ({ modal, setModal, noActionButtonCallback, actionButtonCallbac
         >
         </ModalContainer>
     )
+}
+Continue.propTypes = {
+    modal: PropTypes.bool,
+    setModal: PropTypes.func,
+    noActionButtonCallback: PropTypes.func,
+    actionButtonCallback: PropTypes.func,
 }
 export default Continue

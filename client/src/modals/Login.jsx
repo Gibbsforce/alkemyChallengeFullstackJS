@@ -1,3 +1,4 @@
+import Proptypes from "prop-types"
 // Hooks
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
@@ -22,7 +23,6 @@ const inputElements = [
         placeholder: "Password"
     },
 ]
-// modal: boolean, setModal: function
 const Login = ({ modal, setModal }) => {
 
     const navigate = useNavigate()
@@ -96,5 +96,9 @@ const Login = ({ modal, setModal }) => {
             }
         </ModalContainer>
     )
+}
+Login.proptypes = {
+    modal: Proptypes.bool,
+    setModal: Proptypes.func,
 }
 export default Login

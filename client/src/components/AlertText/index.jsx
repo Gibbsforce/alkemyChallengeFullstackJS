@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import { Wrapper, Content } from "./AlertText"
 const AlertText = ({ text }) => {
     return (
@@ -9,5 +10,8 @@ const AlertText = ({ text }) => {
             </Content>
         </Wrapper>
     )
+}
+AlertText.propTypes = {
+    text: PropTypes.string,
 }
 export default AlertText
