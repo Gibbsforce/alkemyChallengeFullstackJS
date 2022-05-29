@@ -16,6 +16,7 @@ export const useGetBudgetsFetch = () => {
       try {
         setError(false)
         setIsLoading(true)
+        if (budgets.length === 0) return
         const { message, budget } = await API.fetchGetBudgets(token)
         if (message !== "OK") {
           setIsLoading(false)
@@ -38,6 +39,6 @@ export const useGetBudgetsFetch = () => {
       }
     }
     fetchBudgets()
-  }, [token])
+  }, [token, budgets])
   return { error, budgets, isLoading, totalIncome, totalExpense }
 }
