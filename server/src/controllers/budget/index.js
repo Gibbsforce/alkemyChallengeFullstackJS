@@ -71,7 +71,9 @@ const updateBudgetById = async (req, res) => {
     )
     const { id } = req.params
     if (!userBudget.map(({ _id }) => _id.toString()).includes(id))
-      return res.status(404).json({ message: "Not found" })
+      return res
+        .status(404)
+        .json({ message: "Not found", description: "Coudn't find" })
     const previousBudget = await budgetDAO.getById(id)
     const { concept, amount, category } = req.body
     const budget = {

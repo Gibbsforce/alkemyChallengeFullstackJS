@@ -1,7 +1,7 @@
 [
   {
     "concept": "Dinner",
-    "amount": 89,
+    "amount": 109,
     "type": "expense",
     "category": "Food",
     "user": {
@@ -9,6 +9,120 @@
       "name": "Alvaro"
     },
     "_id": 1,
-    "timestamp": "2022-05-28T01:39:06.419Z"
+    "timestamp": "2022-05-28T23:59:43.452Z"
+  },
+  {
+    "concept": "Salary",
+    "amount": 599,
+    "type": "income",
+    "user": {
+      "email": "tlalvaro15@gmail.com",
+      "name": "Alvaro"
+    },
+    "_id": 2,
+    "timestamp": "2022-05-29T00:01:12.336Z"
+  },
+  {
+    "concept": "Debt Payment",
+    "amount": 299,
+    "type": "income",
+    "user": {
+      "email": "tlalvaro15@gmail.com",
+      "name": "Alvaro"
+    },
+    "_id": 3,
+    "timestamp": "2022-05-28T02:29:15.118Z"
+  },
+  {
+    "concept": "Extra Job",
+    "amount": 99,
+    "type": "income",
+    "user": {
+      "email": "tlalvaro15@gmail.com",
+      "name": "Alvaro"
+    },
+    "_id": 4,
+    "timestamp": "2022-05-28T02:33:07.543Z"
+  },
+  {
+    "concept": "Extra Job",
+    "amount": 59,
+    "type": "income",
+    "user": {
+      "email": "tlalvaro15@gmail.com",
+      "name": "Alvaro"
+    },
+    "_id": 5,
+    "timestamp": "2022-05-29T00:02:00.859Z"
+  },
+  {
+    "concept": "Plus",
+    "amount": 499,
+    "type": "income",
+    "user": {
+      "email": "tlalvaro15@gmail.com",
+      "name": "Alvaro"
+    },
+    "_id": 6,
+    "timestamp": "2022-05-28T02:37:20.402Z"
+  },
+  {
+    "concept": "Gas",
+    "amount": 89,
+    "type": "expense",
+    "category": "Transport",
+    "user": {
+      "email": "tlalvaro15@gmail.com",
+      "name": "Alvaro"
+    },
+    "_id": 7,
+    "timestamp": "2022-05-28T23:28:09.368Z"
+  },
+  {
+    "concept": "State addition",
+    "amount": 99,
+    "type": "income",
+    "user": {
+      "email": "tlalvaro15@gmail.com",
+      "name": "Alvaro"
+    },
+    "_id": 8,
+    "timestamp": "2022-05-28T02:39:10.362Z"
+  },
+  {
+    "concept": "Pizza",
+    "amount": 59,
+    "type": "expense",
+    "category": "Food",
+    "user": {
+      "email": "tlalvaro15@gmail.com",
+      "name": "Alvaro"
+    },
+    "_id": 9,
+    "timestamp": "2022-05-28T23:59:53.109Z"
+  },
+  {
+    "concept": "Channel Glasses",
+    "amount": 139,
+    "type": "expense",
+    "category": "Clothes",
+    "user": {
+      "email": "tlalvaro15@gmail.com",
+      "name": "Alvaro"
+    },
+    "_id": 10,
+    "timestamp": "2022-05-28T23:28:18.537Z"
+  },
+  {
+    "concept": "Bread",
+    "amount": 19,
+    "type": "expense",
+    "category": "Food",
+    "user": {
+      "email": "tlalvaro15@gmail.com",
+      "name": "Alvaro"
+    },
+    "_id": 11,
+    "timestamp": "2022-05-28T23:28:32.970Z"
   }
 ]
