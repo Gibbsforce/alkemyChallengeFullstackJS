@@ -77,13 +77,13 @@ JWT_EXPIRES_IN=30m
 `To install all dependencies, client folder`
 
 ```
-npm init
+npm install
 ```
 
 `To install all dependencies, server folder`
 
 ```
-npm init
+npm install
 ```
 
 `Running the server by going to the server folder and it can be initialized with:`
