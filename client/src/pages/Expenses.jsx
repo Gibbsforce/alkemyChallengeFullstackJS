@@ -177,7 +177,7 @@ const Expenses = () => {
             {editLoading && <Spinner />}
             {isLoading && <Spinner />}
             {deleteLoading && <Spinner />}
-            {error && <span>{"Something went wrong...!"}</span>}
+            {error && <AlertText text={"Something went wrong...!"} />}
             {!editError && editMessage != null && <AlertText text={editMessage} />}
             {!deleteError && deleteMessage != null && <AlertText text={deleteMessage} />}
             <Body
