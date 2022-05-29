@@ -62,16 +62,28 @@ STORAGE=file
 STORAGE=sql
 ```
 
-`It uses JWT for authentication, it can be chenged in the .env file in the server folder:`
+`It uses JWT for authentication, the sercet token can be chenged in the .env file in the server folder:`
 
 ```
 JWT_SECRET=
 ```
 
-`It can be set the expires time of the token provider by changing the .env file in the server folder. In addtion: "s" means seconds, "m" means minutes, "h" means hours, etc`
+`It can be set the expires time of the token by changing the .env file in the server folder. In addtion: "s" means seconds, "m" means minutes, "h" means hours, etc`
 
 ```
 JWT_EXPIRES_IN=30m
+```
+
+`To install all dependencies, client folder`
+
+```
+npm init
+```
+
+`To install all dependencies, server folder`
+
+```
+npm init
 ```
 
 `Running the server by going to the server folder and it can be initialized with:`
@@ -80,7 +92,11 @@ JWT_EXPIRES_IN=30m
 npm start
 ```
 
-`It can be watched using the nodemon as a dev dependecy`
+`It can be watched using nodemon as a dev dependency`
+
+```
+npm install nodemon -D
+```
 
 ```
 npm run nodemon
@@ -96,13 +112,13 @@ Budget table created
 Users table created
 ```
 
-`It run the tests by using the new test module by Node and the new fetch API by Node. Server should be running.`
+`It runs the tests by using the new test module and the new fetch API by Node in the 18.0.0 version. Server should be running.`
 
 ```
 npm run test
 ```
 
-`By starting the server, it is posiible start the frontend (client). It uses Vite to pack and transpile the files in React and Express framework in the Node runtime environment. Go to the client folder and set:`
+`By starting the server, it is posiible start the frontend (client). It uses Vite to pack and transpile the files in React. It usesExpress framework in the Node runtime environment. Go to the client folder and set:`
 
 ```
 npm run dev
@@ -124,7 +140,7 @@ npm start
 
 ## 3. Use the app
 
-`For the first time, you should sign up. You should provide a Name, an email and a password, the password should be an 8 characters length and contains aat least one letter and one number`
+`For the first time, you should sign up. You should provide a Name, an email and a password, the password should be an 8 characters length and contains at least one letter and one number`
 
 ```
 Name: Alvaro
@@ -138,4 +154,4 @@ Email: tlalvaro15@gmail.com
 Password: aaaa0000
 ```
 
-`The data provided above is already stored in both fila and sql persistence, you could directly login`
+`The data provided above is already stored in both file and sql persistence, you could directly login`
