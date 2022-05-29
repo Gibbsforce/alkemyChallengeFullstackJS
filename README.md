@@ -4,6 +4,16 @@
 The App uses React as a frontend and Express in Node as a backend
 ```
 
+`Versions`
+
+```
+Node 18.2.0
+```
+
+```
+React 18.0.0
+```
+
 `The App Tree`
 
 ```
